@@ -1,0 +1,36 @@
+{
+    "details": "Generated for jolq24 at 2025-01-15 13:35:29.",
+    "key": "88c21f57b4dc4d076af9d2c6515b4329",
+    "summary": {
+        "questions": 11,
+        "points": 13,
+        "pass": 10.0,
+        "passdistinct": 13.0
+    },
+    "points": {
+        "1.1": 1,
+        "1.2": 1,
+        "1.3": 1,
+        "1.4": 1,
+        "1.5": 1,
+        "1.6": 1,
+        "1.7": 1,
+        "1.8": 1,
+        "2.1": 1,
+        "2.2": 1,
+        "3.1": 3
+    },
+    "answers": {
+        "1.1": "My cat's name is Nynaeve and has blue eyes.",
+        "1.2": 1,
+        "1.3": "My cat's name is Nynaeve, has blue eyes and 1 lives left to live.",
+        "1.4": "Nynaeve has 4 paws.",
+        "1.5": "Nynaeve has 2 paws but cats have 4 paws.",
+        "1.6": "My cat's name is Nynaeve, has blue eyes and 1 lives left to live. My cat's name is Misha, has blue eyes and -1 lives left to live.",
+        "1.7": "27-08-10",
+        "1.8": 97690,
+        "2.1": 221596,
+        "2.2": "35-49-36",
+        "3.1": true
+    }
+}
