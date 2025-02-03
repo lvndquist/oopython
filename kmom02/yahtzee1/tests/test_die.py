@@ -13,9 +13,9 @@ class TestDie(unittest.TestCase):
 
     def test_die_no_arg(self):
         """ Test creating a die without argument """
-        die = Die()
+        die = Die() # 5 with seed
         die_val = die.get_value()
-        self.assertTrue(1 <= die_val <= 6)
+        self.assertEqual(die_val, 5)
 
     def test_die_arg(self):
         """ Test creating a die with argument """
@@ -40,7 +40,7 @@ class TestDie(unittest.TestCase):
         """ Test random roll """
         die = Die(2)
         start_val = die.get_value()
-        die.roll()
+        die.roll() # gives 5 with given seed
         end_val = die.get_value()
         self.assertNotEqual(start_val, end_val)
 

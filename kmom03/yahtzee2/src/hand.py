@@ -19,7 +19,7 @@ class Hand():
             for die in self.dice:
                 die = die.roll()
 
-    def set_values(self, dice_values) -> list[int]:
+    def set_values(self, dice_values) -> list[Die]:
         """ Sets values of the dice """
         dice_list = []
 
@@ -64,7 +64,7 @@ class Hand():
             dice_as_list.append(die.get_value())
         return dice_as_list
 
-    def occurances(self):
+    def occurances(self) -> dict[int, int]:
         """ Count occurances in a hand using a dictionary """
         occurances = {}
         sorted_values = sorted(self.to_list())
@@ -75,7 +75,7 @@ class Hand():
                 occurances[value] = 1
         return occurances
 
-    def sum(self):
+    def sum(self) -> int:
         """ Get the sum of all dice in the hand """
         total = 0
         for value in self.to_list():

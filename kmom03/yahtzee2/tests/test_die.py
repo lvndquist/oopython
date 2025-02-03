@@ -14,34 +14,35 @@ class TestDie(unittest.TestCase):
     def test_die_no_arg(self):
         """ Test creating a die without argument """
         die = Die()
-        die_val = die.get_value()
-        self.assertTrue(1 <= die_val <= 6)
+        die_val = die.value #5
+        #self.assertTrue(1 <= die_val <= 6)
+        self.assertEqual(die_val, 5)
 
     def test_die_arg(self):
         """ Test creating a die with argument """
         die_set_val = 3
         die = Die(die_set_val)
-        die_val = die.get_value()
+        die_val = die.value
         self.assertEqual(die_val, die_set_val)
 
     def test_die_large_arg(self):
         """ Test creating a die with too big argument """
         die = Die(100)
-        die_val = die.get_value()
+        die_val = die.value
         self.assertEqual(die_val, 6)
 
     def test_die_small_arg(self):
         """ Test creating a die with too small argument """
         die = Die(0)
-        die_val = die.get_value()
+        die_val = die.value
         self.assertEqual(die_val, 1)
 
     def test_roll(self):
         """ Test random roll """
         die = Die(2)
-        start_val = die.get_value()
+        start_val = die.value
         die.roll()
-        end_val = die.get_value()
+        end_val = die.value
         self.assertNotEqual(start_val, end_val)
 
     def test_get_name(self):

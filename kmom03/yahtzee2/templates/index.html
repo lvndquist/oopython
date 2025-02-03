@@ -3,9 +3,9 @@
 <div class="container" role="main">
     <div class="page-header">
         <p>Hand: {{ hand }}  </p>
-        {% for image in hand_dice_images %}
-            <img src="{{ url_for('static',filename='img/' + image) }}" width="75">
-        {%endfor%}
+        {% for die in hand.dice %}
+            <img src="{{ url_for('static',filename='img/' + die.get_name() + '.png') }}" width="75">
+        {% endfor %}
     </div>
 </div>
 

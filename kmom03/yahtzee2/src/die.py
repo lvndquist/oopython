@@ -26,7 +26,8 @@ class Die():
             die_str = "six"
         return die_str
 
-    def get_value(self) -> int:
+    @property
+    def value(self) -> int:
         """ Gets the value of a die """
         return self._value
 
@@ -60,7 +61,7 @@ class Die():
     def __eq__(self, arg) -> bool:
         """ Overwrite == operator """
         if isinstance(arg, Die):
-            return self.get_value() == arg.get_value()
+            return self.value == arg.value
         if isinstance(arg, int):
-            return self.get_value() == arg
+            return self.value == arg
         return False

@@ -63,10 +63,10 @@ class TestHand(unittest.TestCase):
         for die, control_value in zip(hand.dice, control_values):
 
             # Value of the die should be integer
-            self.assertIsInstance(die.get_value(), int)
+            self.assertIsInstance(die.value, int)
 
             # Value of the die should be between 1 and 6
-            self.assertTrue(1 <= die.get_value() <= 6)
+            self.assertTrue(1 <= die.value <= 6)
 
             # Value of the die should be same as the control value
-            self.assertEqual(die.get_value(), control_value)
+            self.assertEqual(die.value, control_value)

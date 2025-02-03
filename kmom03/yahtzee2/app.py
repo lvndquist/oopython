@@ -12,15 +12,8 @@ app = Flask(__name__)
 def main():
     """ Main route """
     hand = Hand()
-    dice = hand.dice
 
-    hand_dice_images = []
-    for i in range(5):
-        hand_dice_images.append(dice[i].get_name() + ".png")
-
-    return render_template("index.html",
-        hand = str(hand),
-        hand_dice_images = hand_dice_images)
+    return render_template("index.html", hand = hand)
 
 @app.route("/about")
 def about():
