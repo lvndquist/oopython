@@ -1,0 +1,22 @@
+{
+    "details": "Generated for jolq24 at 2025-01-28 18:39:49.",
+    "key": "cbfd2393c69a9c19a11fc8c9c0f9600f",
+    "summary": {
+        "questions": 4,
+        "points": 8,
+        "pass": 8.0,
+        "passdistinct": 8.0
+    },
+    "points": {
+        "1.1": 2,
+        "1.2": 2,
+        "1.3": 2,
+        "1.4": 2
+    },
+    "answers": {
+        "1.1": "930807-7536",
+        "1.2": "Name: James SSN: 930807-7536 Address: Kholinar Smaland Gettland",
+        "1.3": "Name: Hugo SSN: 228474-2825 Courses: oopython, python, htmlphp",
+        "1.4": 3
+    }
+}

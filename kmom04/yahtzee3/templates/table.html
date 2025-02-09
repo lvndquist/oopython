@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Choose</th>
+            <th>Worth</th>
+            <th>Rule</th>
+            <th>Already scored</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rule_name in scoreboard.callables.keys() %}
+        <tr>
+            <td><input type="radio" name="score_choice" value="{{rule_name}}"></td>
+            <td {% if scoreboard.get_points(rule_name) != -1: %} class = "cross" {% endif %}>{{ scoreboard.get_hand_points(rule_name, hand) }}</td>
+            <td {% if scoreboard.get_points(rule_name) != -1: %} class = "cross" {% endif %}>{{ rule_name }}</td>
+            {% if scoreboard.get_points(rule_name) == -1: %}
+                <td> No </td>
+            {% else %}
+                <td> Yes </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
