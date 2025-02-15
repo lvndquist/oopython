@@ -1,0 +1,40 @@
+{% include 'header.html' %}
+
+{% if error_msg: %}
+    <div class="row marketing">
+        <h2>{{ error_msg }}</h2>
+    </div>
+{% endif %}
+
+<div class="container game" role="main">
+    {% if not scoreboard.finished(): %}
+        <div class = "row">
+            <h2>Die rolls</h2>
+            <form role="form" method="POST" action="{{ url_for('roll') }}">
+                <div class = "form-group">
+                    {% for i in range(5) %}
+                        <div class = "die-select"> 
+                            <img src="{{ url_for('static',filename='img/' + hand.dice[i].get_name() + '.png') }}" width="75">
+                            <input type = "checkbox" name = "die" value={{i}} class="form-control"/>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-default" {% if error_msg or rolls == 2: %} disabled {% endif %}>Re-roll</button>
+            </form>
+        </div>
+        <div class = "row"> 
+            <h2>Rules - Points: {{scoreboard.get_total_points()}}</h2>
+            <form method="POST" action = {{ url_for("score") }}>
+                {% include "table.html" %}
+                <button type="submit" class="btn btn-default">Select</button>
+            </form>
+        </div>
+    {% else: %}
+        <div class = "row">
+            <h2>Game has finished!</h2>
+            <h2>Your score: {{scoreboard.get_total_points()}} </h2>
+        </div>
+    {% endif %}
+</div>
+
+{% include 'footer.html' %}
