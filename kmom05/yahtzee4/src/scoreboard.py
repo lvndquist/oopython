@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """ Module for scoreboard in yahtzee """
 
-from src.hand import Hand
+"""from src.hand import Hand
 from src.rules import Ones, Twos, Threes, Fours, Fives, Sixes
 from src.rules import ThreeOfAKind, FourOfAKind, SmallStraight
-from src.rules import LargeStraight, FullHouse, Yahtzee, Chance
+from src.rules import LargeStraight, FullHouse, Yahtzee, Chance """
+from hand import Hand
+from rules import Ones, Twos, Threes, Fours, Fives, Sixes
+from rules import ThreeOfAKind, FourOfAKind, SmallStraight
+from rules import LargeStraight, FullHouse, Yahtzee, Chance
+
 
 class Scoreboard:
     """ Class representing a scoreboard """

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Module for a hand in yahtzee """
-from src.die import Die
+from die import Die
 
 class Hand():
     """ Hand class """
