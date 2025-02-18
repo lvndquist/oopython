@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """ Module for rules in yahtzee """
 from abc import ABC, abstractmethod
-#from src.hand import Hand
-from hand import Hand
+from src.hand import Hand
+#from hand import Hand
 
 class Rule(ABC):
     """ Abstract class for rule """

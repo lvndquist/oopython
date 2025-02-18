@@ -6,9 +6,11 @@ Yahtzee app
 import re
 import os
 import traceback
+from datetime import datetime
 from flask import Flask, render_template, session, url_for, redirect, request
 from src.hand import Hand
 from src.scoreboard import Scoreboard
+from src.leaderboard import Leaderboard
 
 app = Flask(__name__)
 app.secret_key = re.sub(r"[^a-z\d]", "", os.path.realpath(__file__))
@@ -23,7 +25,7 @@ def main():
             and "rolls" not in session
             and "error_msg" not in session
         ):
-        set_session(Hand(), Scoreboard(), 0, False)
+        reset_session()
     hand, scoreboard, rolls, error_msg = get_session()
 
     return render_template(
@@ -33,6 +35,10 @@ def main():
             rolls = rolls,
             error_msg = error_msg
     )
+
+def reset_session():
+    """ Reset session state to initial state """
+    set_session(Hand(), Scoreboard(), 0, False)
 
 def get_session():
     """ Get the session """
@@ -98,6 +104,40 @@ def reset():
     _ = [session.pop(key) for key in list(session.keys())]
 
     return redirect(url_for('main'))
+
+@app.route("/add_to_leaderboard", methods=["POST"])
+def add_to_leaderboard():
+    """ Add a score to leaderboard """
+    name = request.form.get('player_name')
+    _, scoreboard, _, _ = get_session()
+    points = scoreboard.get_total_points()
+    date = datetime.now()
+
+    lb = Leaderboard().load("src/score.txt")
+    lb.add_entry(name, points, str(date)[:19])
+    lb.save("src/score.txt")
+    reset_session()
+    return redirect(url_for('leaderboard'))
+
+@app.route("/remove_from_leaderboard", methods=["POST"])
+def remove_from_leaderboard():
+    """ Remove an entry from leaderboard """
+    entry = request.form.get("del_choice")
+
+    if entry:
+        entry = entry.strip("()").replace("'", "").replace(" ", "").split(",")
+        lb = Leaderboard().load("src/score.txt")
+        date_entry = entry[2][0:10] + " " + entry[2][10:19]
+        lb.remove_entry(entry[0], entry[1], date_entry)
+        lb.save("src/score.txt")
+
+    return redirect(url_for('leaderboard'))
+
+@app.route("/leaderboard")
+def leaderboard():
+    """ Route for leaderboard """
+    lb = Leaderboard().load("src/score.txt")
+    return render_template("leaderboard.html", leaderboard = lb.entries)
 
 @app.errorhandler(404)
 def page_not_found(e):

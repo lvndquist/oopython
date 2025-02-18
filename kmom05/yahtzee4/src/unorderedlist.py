@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """ Module implementing an unordered list """
-from node import Node
-from errors import MissingIndex, MissingValue
+from src.node import Node
+from src.errors import MissingIndex, MissingValue
 
 class UnorderedList():
     """Class representation of an unordered list"""
     def __init__(self, head = None) -> None:
         self._head = head
+
     @property
     def head(self):
         """Getter for head property"""
@@ -66,6 +67,7 @@ class UnorderedList():
         # end of list
         return counter
 
+
     def get(self, index):
         """Get the value at an index"""
         if self.head is None:
@@ -104,6 +106,7 @@ class UnorderedList():
             ul_data += str(current_node.data) + ", "
             current_node = current_node.next
         print(ul_data[:len(ul_data) - 2])
+        #return ul_data
 
     def remove(self, data):
         """Remove a node with first occurance of data"""
@@ -124,7 +127,40 @@ class UnorderedList():
         # previous never changed so the head is being removed
         if previous_node is None:
             self.head = current_node.next
-
+            return current_node.data
         # value to remove found
-        elif current_node.data == data:
+        if current_node.data == data:
             previous_node.next = current_node.next
+            return current_node.data
+
+    def __len__(self) -> int:
+        """ Overwrite len() for orderedlist class"""
+        return self.size()
+
+    def __str__(self) -> str:
+        """ Overwrite str() for orderedlist class"""
+        current_node = self.head
+        ul_data = ""
+        while current_node is not None:
+            ul_data += str(current_node.data) + ", "
+            current_node = current_node.next
+        return ul_data[:len(ul_data) - 2]
+
+    def __getitem__(self, key: int):
+        """ Overwrite getitem() for orderedlist class """
+        return self.get(key)
+
+    def __setitem__(self, key: int, value):
+        """ Overwrite setitem() for orderedlist class """
+        return self.set(key, value)
+
+if __name__ == "__main__":
+    ul = UnorderedList()
+    ul.append(1)
+    ul.append(2)
+    ul.append(3)
+    print(len(ul))
+    print(ul)
+    print(ul[0])
+    ul[0] = 22
+    print(ul[0])

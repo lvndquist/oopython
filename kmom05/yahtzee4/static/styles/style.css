@@ -29,6 +29,10 @@ button {
     width: 8rem;
 }
 
+.btn.btn-default {
+ padding: 3px;
+}
+
 .row {
     width: auto; 
     display: flex;
